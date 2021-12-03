@@ -90,6 +90,7 @@ declare module 'react-native-keychain' {
   ): Promise<false | Result>;
 
   function getGenericPassword(
+    username: stringg,
     options?: Options
   ): Promise<false | UserCredentials>;
 

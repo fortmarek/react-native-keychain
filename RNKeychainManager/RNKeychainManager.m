@@ -363,6 +363,7 @@ RCT_EXPORT_METHOD(setGenericPasswordForOptions:(NSDictionary *)options
 }
 
 RCT_EXPORT_METHOD(getGenericPasswordForOptions:(NSDictionary * __nullable)options
+                  withUsername:(NSString *)searchUsername
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -371,6 +372,7 @@ RCT_EXPORT_METHOD(getGenericPasswordForOptions:(NSDictionary * __nullable)option
 
   NSDictionary *query = @{
     (__bridge NSString *)kSecClass: (__bridge id)(kSecClassGenericPassword),
+    (__bridge NSString *)kSecAttrAccount: searchUsername,
     (__bridge NSString *)kSecAttrService: service,
     (__bridge NSString *)kSecReturnAttributes: (__bridge id)kCFBooleanTrue,
     (__bridge NSString *)kSecReturnData: (__bridge id)kCFBooleanTrue,

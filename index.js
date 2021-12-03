@@ -195,10 +195,11 @@ export function setGenericPassword(
  * @return {Promise} Resolves to `{ service, username, password, storage }` when successful
  */
 export function getGenericPassword(
+  username?: string,
   serviceOrOptions?: string | Options
 ): Promise<false | UserCredentials> {
   const options = normalizeOptions(serviceOrOptions);
-  return RNKeychainManager.getGenericPasswordForOptions(options);
+  return RNKeychainManager.getGenericPasswordForOptions(options, username);
 }
 
 /**
